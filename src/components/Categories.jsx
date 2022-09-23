@@ -4,16 +4,22 @@ import { useState } from 'react';
 
 function Categories({ items }) {
   const [activeItem, setActiveItem] = useState(null);
+  const [count, setCount] = useState(0);
   const onCategoryClick = (index) => {
     setActiveItem(index);
+    setCount((num) => ++num);
   };
-
-  console.log(onCategoryClick);
+  console.log(activeItem);
+  console.log(count);
 
   return (
     <div className="categories">
       <ul>
-        <li>Все</li>
+        <h3>{count}</h3>
+
+        <li className={activeItem === null ? 'active' : ''} onClick={() => onCategoryClick(null)}>
+          Все
+        </li>
         {items.map((name, index) => (
           <li
             className={activeItem === index ? 'active' : ''}

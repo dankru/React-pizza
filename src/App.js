@@ -1,20 +1,17 @@
 import React from 'react';
 
-import { Header, Button, Categories, Test } from './components';
+import { Header, Button, Categories } from './components';
 
 function App() {
   return (
     <div className="wrapper">
       <Header />
-      <Button onClick={() => alert('')}>Я кнопка</Button>
+      <Button outline={true} onClick={() => alert('')}>
+        Я кнопка
+      </Button>
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Test className="testClass" onCategoryClick="something cool">
-              {' '}
-              HELLO I"MA CHILD
-              <div className="sort"> im a text</div>
-            </Test>
             <Categories
               onCategoryClick={(name) => console.log('name = ', name)}
               items={['Мясные', 'Вегетарианская', 'Сырная', 'Закрытая']}

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Button({ onClick, className, outline, children }) {
+function Button({ onClick, children, className, outline }) {
   return (
     <button
       onClick={onClick}
