@@ -5,6 +5,18 @@ import { Header } from './components';
 import { Home, Cart, NotFoundBlock } from './pages';
 
 function App() {
+  const [pizzas, setPizzas] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('http://localhost:3000/db.json')
+      .then((responce) => responce.json())
+      .then((json) => {
+        setPizzas(json.pizzas);
+      });
+  }, []);
+
+  console.log(pizzas);
+
   return (
     <div className="wrapper">
       <Header></Header>

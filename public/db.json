@@ -1,0 +1,14 @@
+{
+  "pizzas": [
+    {
+      "id": 0,
+      "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fpizza-top-view&psig=AOvVaw1Vm2jtreElkvLcMMtdOY31&ust=1664338421987000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiN-bPDtPoCFQAAAAAdAAAAABAE",
+      "name": "Пепепеперони с пепеперцем",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 803,
+      "category": 0,
+      "rating": 4
+    }
+  ]
+}
