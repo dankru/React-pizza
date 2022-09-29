@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 
 function PizzaBlock({ imageUrl, name, price, types, sizes }) {
@@ -22,7 +23,10 @@ function PizzaBlock({ imageUrl, name, price, types, sizes }) {
             <li
               key={type}
               onClick={() => onSelectType(index)}
-              className={activeType === index ? 'active' : ''}>
+              className={classNames({
+                active: activeType === index,
+                disabled: !types.includes(index),
+              })}>
               {type}
             </li>
           ))}
@@ -32,7 +36,10 @@ function PizzaBlock({ imageUrl, name, price, types, sizes }) {
             <li
               key={size}
               onClick={() => onSelectSize(index)}
-              className={activeSize === index ? 'active' : ''}>
+              className={classNames({
+                active: activeSize === index,
+                disabled: !sizes.includes(index),
+              })}>
               {size} см.
             </li>
           ))}

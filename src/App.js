@@ -1,4 +1,6 @@
 import React from 'react';
+//axios needed for more complex requests
+import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
 
 import { Header } from './components';
@@ -8,11 +10,9 @@ function App() {
   const [pizzas, setPizzas] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/db.json')
-      .then((responce) => responce.json())
-      .then((json) => {
-        setPizzas(json.pizzas);
-      });
+    axios.get('http://localhost:3000/db.json').then(({ data }) => {
+      setPizzas(data.pizzas);
+    });
   }, []);
 
   return (
