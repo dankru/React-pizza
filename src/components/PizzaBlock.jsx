@@ -1,6 +1,9 @@
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
+//classNames is a function
+import classNames from 'classnames';
 
+console.log(PropTypes);
 function PizzaBlock({ imageUrl, name, price, types, sizes }) {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = ['20', '36', '40'];
@@ -67,4 +70,19 @@ function PizzaBlock({ imageUrl, name, price, types, sizes }) {
   );
 }
 
+//It's a strict typization using propTypes library
+PizzaBlock.propTypes = {
+  name: PropTypes.string,
+  imageUrl: PropTypes.string,
+  price: PropTypes.number,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+  name: '---',
+  price: 0,
+  sizes: [],
+  types: [],
+};
 export default PizzaBlock;
