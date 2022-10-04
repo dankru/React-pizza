@@ -3,13 +3,13 @@ import React from 'react';
 //classNames is a function
 import classNames from 'classnames';
 
-console.log(PropTypes);
+//console.log(PropTypes);
 function PizzaBlock({ imageUrl, name, price, types, sizes }) {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = ['20', '36', '40'];
   const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActvieSize] = React.useState(sizes[0]);
-  console.log(name, types);
+  //console.log(name, types);
   const onSelectType = (index) => {
     setActiveType(index);
   };
