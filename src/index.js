@@ -1,40 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
 import './scss/app.scss';
 import App from './App';
 
+//imported react-redux
 //console.log(createStore);
-//added redux lib
+console.log(store.getState());
+store.subscribe(() => {
+  console.log('store state has changed', store.getState());
+});
+const inc = () => {
+  store.dispatch({
+    type: 'INCREMENT',
+  });
+};
 
-function counter(state = 0, action) {
-  // if (action.type === 'INCREMENT') {
-  //   return state + 1;
-  // }
-  // return state;
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
-let store = createStore(counter);
-
-console.log('store', store);
-store.subscribe(() => console.log('store state changed', store.getState()));
-console.log(store.state);
-store.dispatch({ type: 'INCREMENT' });
-
+store.dispatch({
+  type: 'SET_SORT_BY',
+  payload: 'price',
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <button onClick={inc}>+1</button>
+        <App />
+      </Provider>
     </BrowserRouter>
-    ,
   </React.StrictMode>,
 );

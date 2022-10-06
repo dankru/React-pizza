@@ -7,9 +7,22 @@ function Home({ items }) {
       <div className="content__top">
         <Categories
           onCategoryClick={(name) => console.log('name = ', name)}
-          items={['Мясные', 'Вегетарианская', 'Сырная', 'Закрытая']}
+          // items={[
+          //   { name: 'Мясные' },
+          //   { name: 'Вегетарианская' },
+          //   { name: 'Сырная' },
+          //   { name: 'Закрытая' },
+          // ]}
+          // items={['сыр', '123']}
         />
-        <SortPopup items={['популярности', 'цене', 'алфавиту']}></SortPopup>
+        <SortPopup
+          items={[
+            { name: 'популярности', type: 'popularity' },
+            { name: 'цене', type: 'price' },
+            { name: 'алфавиту', type: 'alphabet' },
+          ]}>
+          {/* items={['сыр', '123']} */}
+        </SortPopup>
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

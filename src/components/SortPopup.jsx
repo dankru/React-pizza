@@ -5,10 +5,9 @@ function SortPopup({ items }) {
   const [activeItem, setActiveItem] = React.useState(0);
 
   //label for span in popup
-  const activeLabel = items[activeItem];
+  const activeLabel = items[activeItem].name;
   //useRef needed to store relevant data
   const sortRef = React.useRef(null);
-
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
@@ -53,12 +52,12 @@ function SortPopup({ items }) {
         <div className="sort__popup">
           <ul>
             {items &&
-              items.map((name, index) => (
+              items.map((obj, index) => (
                 <li
                   className={activeItem === index ? 'active' : ''}
                   onClick={() => onCategoryClick(index)}
-                  key={`${name}_${index}`}>
-                  {name}
+                  key={`${obj.type}_${index}`}>
+                  {obj.name}
                 </li>
               ))}
           </ul>
