@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import filtersReducer from './reducers/filters';
 
 function counter(state = 0, action) {
   // if (action.type === 'INCREMENT') {

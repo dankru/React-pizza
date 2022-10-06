@@ -23,6 +23,7 @@ store.dispatch({
   type: 'SET_SORT_BY',
   payload: 'price',
 });
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
