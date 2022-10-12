@@ -1,29 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-
-import store from './redux/store';
 import './scss/app.scss';
 import App from './App';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 //imported react-redux
 //console.log(createStore);
-console.log(store.getState());
-store.subscribe(() => {
-  console.log('store state has changed', store.getState());
-});
 const inc = () => {
   store.dispatch({
     type: 'INCREMENT',
   });
 };
-
-store.dispatch({
-  type: 'SET_SORT_BY',
-  payload: 'price',
+store.subscribe(() => {
+  console.log('Хранилище изменилось', store.getState());
 });
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
