@@ -12,18 +12,6 @@ function SortPopup({ items }) {
     setVisiblePopup(!visiblePopup);
   };
 
-  React.useEffect(() => {
-    document.body.addEventListener('click', handleOutsideClick);
-  }, []);
-
-  //If we clicked outside of sort DOM element
-  const handleOutsideClick = (event) => {
-    if (!event.path.includes(sortRef.current)) {
-      setVisiblePopup(false);
-      //console.log('clicked outside  ');
-    }
-  };
-
   const onCategoryClick = (index) => {
     setActiveItem(index);
     setVisiblePopup(false);
