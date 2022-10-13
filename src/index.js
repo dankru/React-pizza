@@ -5,23 +5,22 @@ import './scss/app.scss';
 import App from './App';
 import store from './redux/store';
 import { Provider } from 'react-redux';
+import setPizzas from './redux/actions/pizzas';
 
-//imported react-redux
-//console.log(createStore);
-const inc = () => {
-  store.dispatch({
-    type: 'INCREMENT',
-  });
-};
 store.subscribe(() => {
   console.log('Хранилище изменилось', store.getState());
 });
+
+store.dispatch({
+  type: 'SET_CATEGORY',
+  payload: 2,
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <button onClick={inc}>+1</button>
         <App />
       </Provider>
     </BrowserRouter>
