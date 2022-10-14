@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import setPizzas from './redux/actions/pizzas';
 
 store.subscribe(() => {
-  console.log('Хранилище изменилось', store.getState());
+  console.log('произошёл dispatch', store.getState());
 });
 
 store.dispatch({
