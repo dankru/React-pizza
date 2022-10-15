@@ -34,7 +34,7 @@ window.store = store;
 class App extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:3000/db.json').then(({ data }) => {
-      store.dispatch(setPizzas(data.pizzas));
+      this.props.setPizzas(data.pizzas);
     });
   }
   render() {
@@ -57,16 +57,19 @@ class App extends React.Component {
 
 //mapStateToProps means "pick up a state and make it props"
 const mapStateToProps = (state) => {
-  console.log('state has changed');
+  console.log('mapStateToProps');
   return {
     items: state.pizzas.items,
   };
 };
 
+const mapDispatchToProps = {
+  setPizzas,  
+};
 //firstly connect gets two functions:
 //first function returns actions and state (mapStateToProps)
 //second function tels react what should it take from the store (mapDispatchToProps).
 //secondly we choose the app to connect to redux
 //In this example it connects App.js to the store
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
