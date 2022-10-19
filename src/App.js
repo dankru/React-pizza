@@ -2,57 +2,41 @@ import React from 'react';
 //axios needed for more complex requests
 import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { Header } from './components';
 import { Home, Cart, NotFoundBlock } from './pages';
-import store from './redux/store';
-import { connect } from 'react-redux';
 import setPizzas from './redux/actions/pizzas';
 
-window.store = store;
-// function App() {
-//   const [pizzas, setPizzas] = React.useState([]);
-
-//   React.useEffect(() => {
-//     axios.get('http://localhost:3000/db.json').then(({ data }) => {
-//       setPizzas(data.pizzas);
-//     });
-//   }, []);
-
-//   return (
-//     <div className="wrapper">
-//       <Header></Header>
-//       <div className="content">
-//         <Routes>
-//           <Route path="/" element={<Home items={pizzas} />} />
-//           <Route path="/not-found" element={<NotFoundBlock />} />
-//           <Route path="/cart" element={<Cart />} />
-//         </Routes>
-//       </div>
-//     </div>
-//   );
-// }
-class App extends React.Component {
-  componentDidMount() {
+function App() {
+  //const [pizzas, setPizzas] = React.useState([]);
+  const dispatch = useDispatch();
+  const { items } = useSelector(({ pizzas, filters }) => {
+    return {
+      items: pizzas.items,
+      sortBy: filters.sortBy,
+    };
+  });
+  React.useEffect(() => {
     axios.get('http://localhost:3000/db.json').then(({ data }) => {
-      this.props.setPizzas(data.pizzas);
+      dispatch(setPizzas(data.pizzas));
     });
   }
   render() {
     console.log('пропсы= ', this.props);
 
-    return (
-      <div className="wrapper">
-        <Header></Header>
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home items={this.props.items} />} />
-            <Route path="/not-found" element={<NotFoundBlock />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </div>
+  return (
+    <div className="wrapper">
+      <Header></Header>
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home items={items} />} />
+          <Route path="/not-found" element={<NotFoundBlock />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 //mapStateToProps means "pick up a state and make it props"
